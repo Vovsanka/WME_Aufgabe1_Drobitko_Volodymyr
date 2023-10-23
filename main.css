@@ -10,7 +10,9 @@ nav, h1, main, footer {
 nav {
     width: 100%;
     background-color: rgb(222, 222, 222);
+}
 
+nav ul {
     display: flex;
     flex-direction: row;
     justify-content: left;
@@ -53,8 +55,4 @@ nav {
 
 .footer-details {
     border-top: 1px solid var(--green);
-}
-
-.bold {
-    font-weight: bold;
 }
