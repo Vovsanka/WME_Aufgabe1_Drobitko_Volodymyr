@@ -1,4 +1,6 @@
 [
+  ["id", "name", "birth rate per 1000", "cell phones per 100",
+   "children per woman", "life expectancy", "internet user per 100"],
   {
     "id": "001",
     "name": "Brazil",
