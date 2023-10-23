@@ -20,7 +20,7 @@ const fillTable = () => {
     for (const [index, item] of dataset.entries()) {
         let tr = document.createElement('tr')
         if (index % 2 === 1)
-            tr.style.backgroundColor = '#e0e0e0'
+            tr.style.backgroundColor = 'var(--gray)'
         for (const header of headers) {
             tr.insertAdjacentHTML('beforeend',  `<td>${item[header]}</td>`)
         }
