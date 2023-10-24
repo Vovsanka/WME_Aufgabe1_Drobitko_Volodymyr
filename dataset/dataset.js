@@ -1,21 +1,29 @@
 import data from './world_data_v3.json' assert { type: 'json' };
+import headerNames from './headerNames.js'
 
-const selectColumns = function (headers, dataset) {
+const rawHeaders = [
+    "id",
+    "name",
+    "birth rate per 1000",
+    "cell phones per 100",
+    "children per woman",
+    "life expectancy",
+    "internet user per 100"
+]
+
+const selectColumns = (rawHeaders, dataset) => {
     let finalDataset = []
     for (const item of dataset) {
         let finalItem = {}
-        for (const header of headers) {
-            finalItem[header] = item[header]
+        for (const header of rawHeaders) {
+            finalItem[headerNames[header]] = item[header]
         }
         finalDataset.push(finalItem)
     }
     return finalDataset
 }
 
-const headers = data.shift()
-let dataset = selectColumns(headers, data)
-
-// remove extra columns from the dataset
-
+const headers = rawHeaders.map((header) => headerNames[header])
+const dataset = selectColumns(rawHeaders, data)
 
 export default { headers, dataset };
