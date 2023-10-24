@@ -11,7 +11,6 @@ const fillTable = () => {
 
     // init table headers
     let theadTr = thead.insertAdjacentElement('beforeend', document.createElement('tr'))
-    console.log(theadTr)
     for (const header of headers) {
         theadTr.insertAdjacentHTML('beforeend', `<th>${header}</th>`)
     }
@@ -24,11 +23,36 @@ const fillTable = () => {
         for (const header of headers) {
             tr.insertAdjacentHTML('beforeend',  `<td>${item[header]}</td>`)
         }
-        tbody.insertAdjacentElement('beforeend', tr)
+        tbody.append(tr)
+    }
+}
+
+const toggleColumn = () => {
+
+}
+
+const fillColumnToggle = () => {
+    let toggleList = document.getElementsByClassName('data__column-toggle')
+    let headerList = document.createElement('ul')
+    // fill the headerList
+    const optionalHeaders = headers.slice(2)
+    for (const header of optionalHeaders) {
+        let toggleButton = document.createElement('li')
+        toggleButton.append(header)
+        toggleButton.style.margin = '0 5px'
+        toggleButton.onclick = toggleColumn
+        headerList.append(toggleButton)
+        toggleButton.after('|')
+    }
+    // init the columnn toggles
+    for (let toggle of toggleList) {
+        toggle.prepend('Show/hide: ')
+        toggle.append(headerList.cloneNode(true))
     }
 }
 
 
 // main
 fillTable()
+fillColumnToggle()
 
