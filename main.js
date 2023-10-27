@@ -46,7 +46,7 @@ const fillColumnToggle = () => {
             toggleButton.style.margin = '0 5px'
             toggleButton.onclick = toggleColumn
             headerList.append(toggleButton)
-            toggleButton.after('|')
+            toggleButton.insertAdjacentHTML('afterend', "<li>|</li>")
         }
         toggle.append(headerList)
     }
