@@ -12,7 +12,7 @@ const fillTable = () => {
     // init table headers
     let theadTr = thead.insertAdjacentElement('beforeend', document.createElement('tr'))
     for (const header of headers) {
-        theadTr.insertAdjacentHTML('beforeend', `<th>${header}</th>`)
+        theadTr.insertAdjacentHTML('beforeend', `<th header="${header}">${header}</th>`)
     }
 
     // init table body
@@ -21,14 +21,25 @@ const fillTable = () => {
         if (index % 2 === 1)
             tr.style.backgroundColor = 'var(--gray)'
         for (const header of headers) {
-            tr.insertAdjacentHTML('beforeend',  `<td>${item[header]}</td>`)
+            tr.insertAdjacentHTML('beforeend',  `<td header="${header}">${item[header]}</td>`)
         }
         tbody.append(tr)
     }
 }
 
-const toggleColumn = () => {
+const toggleColumn = (event) => {
+    const toggleHeader = event.target.header
+
+    let table = document.getElementById('data-table')
     
+    // find all tds to toggle
+    let toggleColumnItems = table.querySelectorAll(`[header="${toggleHeader}"]`)
+
+    // toggle the column
+    for (let elem of toggleColumnItems) {
+        elem.hidden = !elem.hidden
+    }
+
 }
 
 const fillColumnToggle = () => {
@@ -44,6 +55,8 @@ const fillColumnToggle = () => {
             let toggleButton = document.createElement('li')
             toggleButton.append(header)
             toggleButton.style.margin = '0 5px'
+            // toggleButton.header = header
+            toggleButton.header = header
             toggleButton.onclick = toggleColumn
             headerList.append(toggleButton)
             toggleButton.insertAdjacentHTML('afterend', "<li>|</li>")
