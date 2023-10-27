@@ -28,27 +28,30 @@ const fillTable = () => {
 }
 
 const toggleColumn = () => {
-
+    
 }
 
 const fillColumnToggle = () => {
     let toggleList = document.getElementsByClassName('data__column-toggle')
-    let headerList = document.createElement('ul')
-    // fill the headerList
     const optionalHeaders = headers.slice(2)
-    for (const header of optionalHeaders) {
-        let toggleButton = document.createElement('li')
-        toggleButton.append(header)
-        toggleButton.style.margin = '0 5px'
-        toggleButton.onclick = toggleColumn
-        headerList.append(toggleButton)
-        toggleButton.after('|')
-    }
+    
     // init the columnn toggles
     for (let toggle of toggleList) {
         toggle.prepend('Show/hide: ')
-        toggle.append(headerList.cloneNode(true))
+        // init the list of toggle elements
+        let headerList = document.createElement('ul')
+        for (const header of optionalHeaders) {
+            let toggleButton = document.createElement('li')
+            toggleButton.append(header)
+            toggleButton.style.margin = '0 5px'
+            toggleButton.onclick = toggleColumn
+            headerList.append(toggleButton)
+            toggleButton.after('|')
+        }
+        toggle.append(headerList)
     }
+
+    
 }
 
 

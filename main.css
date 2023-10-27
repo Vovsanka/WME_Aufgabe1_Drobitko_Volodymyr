@@ -52,6 +52,7 @@ nav ul {
 
 .data__column-toggle {
     margin: 15px 0;
+    cursor: default;
 
     display: flex;
     flex-direction: row;
@@ -67,6 +68,16 @@ nav ul {
     flex-direction: row;
     justify-content: left;
     align-items: center;
+}
+
+.data__column-toggle ul li {
+    text-decoration: underline;
+    
+}
+
+.data__column-toggle ul li:hover {
+    text-decoration: none;
+    color: var(--green);
 }
 
 
