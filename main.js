@@ -3,8 +3,7 @@ import tableData from "/dataset/dataset.js";
 const headers = tableData.headers
 const dataset = tableData.dataset
 
-const fillTable = () => {
-    // create a table contents
+const initTable = () => {
     let table = document.getElementById('data-table')
     let thead = table.querySelector('thead')
     let tbody = table.querySelector('tbody')
@@ -15,16 +14,27 @@ const fillTable = () => {
         theadTr.insertAdjacentHTML('beforeend', `<th header="${header}">${header}</th>`)
     }
 
-    // init table body
-    for (const [index, item] of dataset.entries()) {
-        let tr = document.createElement('tr')
-        if (index % 2 === 1)
-            tr.style.backgroundColor = 'var(--gray)'
-        for (const header of headers) {
-            tr.insertAdjacentHTML('beforeend',  `<td header="${header}">${item[header]}</td>`)
-        }
-        tbody.append(tr)
-    }
+    // init contents
+    fillTableContents()
+}
+
+const fillTableContents = () => {
+    let table = document.getElementById('data-table')
+    let tbody = table.querySelector('tbody')
+
+     // remove current contents
+     tbody.innerHTML = ""
+ 
+     // init table body
+     for (const [index, item] of dataset.entries()) {
+         let tr = document.createElement('tr')
+         if (index % 2 === 1)
+             tr.style.backgroundColor = 'var(--gray)'
+         for (const header of headers) {
+             tr.insertAdjacentHTML('beforeend',  `<td header="${header}">${item[header]}</td>`)
+         }
+         tbody.append(tr)
+     }
 }
 
 const toggleColumn = (event) => {
@@ -42,7 +52,7 @@ const toggleColumn = (event) => {
 
 }
 
-const fillColumnToggle = () => {
+const fillColumnToggles = () => {
     let toggleList = document.getElementsByClassName('data__column-toggle')
     const optionalHeaders = headers.slice(2)
     
@@ -69,6 +79,6 @@ const fillColumnToggle = () => {
 
 
 // main
-fillTable()
-fillColumnToggle()
+initTable()
+fillColumnToggles()
 
