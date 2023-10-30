@@ -20,21 +20,29 @@ const initTable = () => {
 
 const fillTableContents = () => {
     let table = document.getElementById('data-table')
+    let thead = table.querySelector('thead')
     let tbody = table.querySelector('tbody')
 
-     // remove current contents
-     tbody.innerHTML = ""
+    // find hidden headers
+    const headerHidden = {}
+    for (let th of thead.children) {
+        headerHidden[th.header] = th.hidden
+    }
+
+    // remove current contents
+    tbody.innerHTML = ""
  
-     // init table body
-     for (const [index, item] of dataset.entries()) {
-         let tr = document.createElement('tr')
-         if (index % 2 === 1)
-             tr.style.backgroundColor = 'var(--gray)'
-         for (const header of headers) {
-             tr.insertAdjacentHTML('beforeend',  `<td header="${header}">${item[header]}</td>`)
-         }
-         tbody.append(tr)
-     }
+    // init table body
+    for (const [index, item] of dataset.entries()) {
+        let tr = document.createElement('tr')
+        if (index % 2 === 1)
+            tr.style.backgroundColor = 'var(--gray)'
+        for (const header of headers) {
+            const hidden = headerHidden[header]
+            tr.insertAdjacentHTML('beforeend',  `<td header="${header} hidden="${hidden}">${item[header]}</td>`)
+        }
+        tbody.append(tr)
+    }
 }
 
 const toggleColumn = (event) => {
