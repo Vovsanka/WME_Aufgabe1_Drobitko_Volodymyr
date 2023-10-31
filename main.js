@@ -3,6 +3,29 @@ import tableData from "/dataset/dataset.js";
 const headers = tableData.headers
 const dataset = tableData.dataset
 
+const sortByColumn = (header, increasing = true) => {
+    const k = increasing ? 1 : -1
+    dataset.sort((row1, row2) => {
+        if (row1[header] < row2[header]) {
+            return -1 * k;
+        } else if (row1[header] > row2[header]) {
+            return 1 * k;
+        }
+        return 0;
+    })
+    fillTableContents()
+}
+
+const sortByColumnIncreasing = (event) => {
+    const header = event.target.parentElement.header
+    sortByColumn(header, true)
+}
+
+const sortByColumnDecreasing = (event) => {
+    const header = event.target.parentElement.header
+    sortByColumn(header, false)
+}
+
 const initTable = () => {
     let table = document.getElementById('data-table')
     let thead = table.querySelector('thead')
@@ -11,7 +34,19 @@ const initTable = () => {
     // init table headers
     let theadTr = thead.insertAdjacentElement('beforeend', document.createElement('tr'))
     for (const header of headers) {
-        theadTr.insertAdjacentHTML('beforeend', `<th header="${header}">${header}</th>`)
+        let th = document.createElement('th')
+        th.header = header
+        th.insertAdjacentText('afterbegin', header)
+        let upImg = document.createElement('img')
+        upImg.src = "/img/up.svg"
+        upImg.onclick = sortByColumnDecreasing
+        let downImg = document.createElement('img')
+        downImg.src = "/img/down.svg"
+        downImg.onclick = sortByColumnIncreasing
+        upImg.className = downImg.className = "sort-icon"
+        th.append(upImg)
+        th.append(downImg)
+        theadTr.append(th)
     }
 
     // init contents
@@ -84,6 +119,7 @@ const fillColumnToggles = () => {
 
     
 }
+
 
 
 // main

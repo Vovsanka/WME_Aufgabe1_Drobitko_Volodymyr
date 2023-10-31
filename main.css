@@ -80,7 +80,11 @@ nav ul {
     color: var(--green);
 }
 
-
 .footer-details {
     border-top: 1px solid var(--green);
 }
+
+img.sort-icon {
+    width: 15px;
+}
+
