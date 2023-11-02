@@ -3,8 +3,8 @@ import tableData from "/dataset/dataset.js";
 const headers = tableData.headers
 const dataset = tableData.dataset
 
-const sortByColumn = (header, increasing = true) => {
-    const k = increasing ? 1 : -1
+const sortByColumn = (header, ascending = true) => {
+    const k = ascending ? 1 : -1
     dataset.sort((row1, row2) => {
         if (row1[header] < row2[header]) {
             return -1 * k;
@@ -16,12 +16,12 @@ const sortByColumn = (header, increasing = true) => {
     fillTableContents()
 }
 
-const sortByColumnIncreasing = (event) => {
+const sortByColumnAscending = (event) => {
     const header = event.target.parentElement.header
     sortByColumn(header, true)
 }
 
-const sortByColumnDecreasing = (event) => {
+const sortByColumnDescending = (event) => {
     const header = event.target.parentElement.header
     sortByColumn(header, false)
 }
@@ -39,10 +39,10 @@ const initTable = () => {
         th.insertAdjacentText('afterbegin', header)
         let upImg = document.createElement('img')
         upImg.src = "/img/up.svg"
-        upImg.onclick = sortByColumnDecreasing
+        upImg.onclick = sortByColumnAscending
         let downImg = document.createElement('img')
         downImg.src = "/img/down.svg"
-        downImg.onclick = sortByColumnIncreasing
+        downImg.onclick = sortByColumnDescending
         upImg.className = downImg.className = "sort-icon"
         th.append(upImg)
         th.append(downImg)
