@@ -1,6 +1,7 @@
 import data from './world_data_v3.json' assert { type: 'json' };
 import headerNames from './headerNames.js'
 
+// defines which table columns (json) are to pick
 const rawHeaders = [
     "id",
     "name",
@@ -12,6 +13,7 @@ const rawHeaders = [
 ]
 
 const selectColumns = (rawHeaders, dataset) => {
+    // filters the table columns and returns the new table with only the columns specified in rawHeaders
     let finalDataset = []
     for (const item of dataset) {
         let finalItem = {}

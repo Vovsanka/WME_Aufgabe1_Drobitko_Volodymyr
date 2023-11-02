@@ -1,32 +1,19 @@
 import tableData from "/dataset/dataset.js";
 
+// the global variables fetched from json 
 const headers = tableData.headers
 const dataset = tableData.dataset
 
-const sortByColumn = (header, ascending = true) => {
-    const k = ascending ? 1 : -1
-    dataset.sort((row1, row2) => {
-        if (row1[header] < row2[header]) {
-            return -1 * k;
-        } else if (row1[header] > row2[header]) {
-            return 1 * k;
-        }
-        return 0;
-    })
-    fillTableContents()
-}
+// main script
+initTable()
+fillColumnToggles()
 
-const sortByColumnAscending = (event) => {
-    const header = event.target.parentElement.header
-    sortByColumn(header, true)
-}
+// define all the functions
 
-const sortByColumnDescending = (event) => {
-    const header = event.target.parentElement.header
-    sortByColumn(header, false)
-}
-
-const initTable = () => {
+function initTable() {
+    // is called only once when mounted to add dynamic DOM elements to the table
+    // adds the table headers and body
+    // fills the table contents for the first time
     let table = document.getElementById('data-table')
     let thead = table.querySelector('thead')
     let tbody = table.querySelector('tbody')
@@ -53,7 +40,11 @@ const initTable = () => {
     fillTableContents()
 }
 
-const fillTableContents = () => {
+function fillTableContents() {
+    /*
+    removes the previous table contents and then fills it with the current contents of the dataset
+    also pays attention to the current element hidden property 
+    */
     let table = document.getElementById('data-table')
     let thead = table.querySelector('thead')
     let tbody = table.querySelector('tbody')
@@ -80,22 +71,7 @@ const fillTableContents = () => {
     }
 }
 
-const toggleColumn = (event) => {
-    const toggleHeader = event.target.header
-
-    let table = document.getElementById('data-table')
-    
-    // find all tds to toggle
-    let toggleColumnItems = table.querySelectorAll(`[header="${toggleHeader}"]`)
-
-    // toggle the column
-    for (let elem of toggleColumnItems) {
-        elem.hidden = !elem.hidden
-    }
-
-}
-
-const fillColumnToggles = () => {
+function fillColumnToggles() {
     let toggleList = document.getElementsByClassName('data__column-toggle')
     const optionalHeaders = headers.slice(2)
     
@@ -120,9 +96,48 @@ const fillColumnToggles = () => {
     
 }
 
+function toggleColumn(event) {
+    const toggleHeader = event.target.header
 
+    let table = document.getElementById('data-table')
+    
+    // find all tds to toggle
+    let toggleColumnItems = table.querySelectorAll(`[header="${toggleHeader}"]`)
 
-// main
-initTable()
-fillColumnToggles()
+    // toggle the column
+    for (let elem of toggleColumnItems) {
+        elem.hidden = !elem.hidden
+    }
+
+}
+
+function sortByColumnAscending(event) {
+    // event handler for ascending column sort
+    // extracts the column name and calls the sort function
+    const header = event.target.parentElement.header
+    sortByColumn(header, true)
+}
+
+function sortByColumnDescending(event) {
+    // event handler for descending column sort
+    // extracts the column name and calls the sort function
+    const header = event.target.parentElement.header
+    sortByColumn(header, false)
+}
+
+function sortByColumn(header, ascending = true) {
+    // sorts the dataset according to a column named by header ascending/descending
+    // calls a function to rebuild the table in DOM afterwards
+    const k = ascending ? 1 : -1
+    dataset.sort((row1, row2) => {
+        if (row1[header] < row2[header]) {
+            return -1 * k;
+        } else if (row1[header] > row2[header]) {
+            return 1 * k;
+        }
+        return 0;
+    })
+    fillTableContents()
+}
+
 

@@ -1,3 +1,4 @@
+// an object that provides the short names for the table names (json)
 export default {
     "id": "ID",
     "name": "Country",
