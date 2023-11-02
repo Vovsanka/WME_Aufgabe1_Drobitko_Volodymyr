@@ -22,7 +22,7 @@ function initTable() {
     let theadTr = thead.insertAdjacentElement('beforeend', document.createElement('tr'))
     for (const header of headers) {
         let th = document.createElement('th')
-        th.header = header
+        th.setAttribute('header', header)
         th.insertAdjacentText('afterbegin', header)
         let upImg = document.createElement('img')
         upImg.src = "/img/up.svg"
@@ -46,13 +46,13 @@ function fillTableContents() {
     also pays attention to the current element hidden property 
     */
     let table = document.getElementById('data-table')
-    let thead = table.querySelector('thead')
+    let theadTr = table.querySelector('thead tr')
     let tbody = table.querySelector('tbody')
 
     // find hidden headers
     const headerHidden = {}
-    for (let th of thead.children) {
-        headerHidden[th.header] = th.hidden
+    for (let th of theadTr.children) {
+        headerHidden[th.getAttribute('header')] = th.hidden
     }
 
     // remove current contents
@@ -64,8 +64,8 @@ function fillTableContents() {
         if (index % 2 === 1)
             tr.style.backgroundColor = 'var(--gray)'
         for (const header of headers) {
-            const hidden = headerHidden[header]
-            tr.insertAdjacentHTML('beforeend',  `<td header="${header} hidden="${hidden}">${item[header]}</td>`)
+            const hidden = headerHidden[header] ? "hidden" : "";
+            tr.insertAdjacentHTML('beforeend',  `<td header="${header}" ${hidden}>${item[header]}</td>`)
         }
         tbody.append(tr)
     }
@@ -84,7 +84,6 @@ function fillColumnToggles() {
             let toggleButton = document.createElement('li')
             toggleButton.append(header)
             toggleButton.style.margin = '0 5px'
-            // toggleButton.header = header
             toggleButton.header = header
             toggleButton.onclick = toggleColumn
             headerList.append(toggleButton)
@@ -106,7 +105,7 @@ function toggleColumn(event) {
 
     // toggle the column
     for (let elem of toggleColumnItems) {
-        elem.hidden = !elem.hidden
+        elem.hidden = !elem.hidden // updating the properity of standard attribute updates the attribute as well
     }
 
 }
@@ -114,14 +113,15 @@ function toggleColumn(event) {
 function sortByColumnAscending(event) {
     // event handler for ascending column sort
     // extracts the column name and calls the sort function
-    const header = event.target.parentElement.header
+    const header = event.target.parentElement.getAttribute('header')
     sortByColumn(header, true)
 }
 
 function sortByColumnDescending(event) {
     // event handler for descending column sort
     // extracts the column name and calls the sort function
-    const header = event.target.parentElement.header
+    const header = event.target.parentElement.getAttribute('header')
+    console.log(event.target)
     sortByColumn(header, false)
 }
 
