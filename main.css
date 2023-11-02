@@ -1,6 +1,6 @@
 :root {
     --gray: #e0e0e0;
-    --gray-border: rgb(204, 204, 204);
+    --dark-gray: rgb(204, 204, 204);
     --green: rgb(107, 195, 45);
 }
 
@@ -10,10 +10,13 @@ nav, h1, main, footer {
 
 nav {
     width: 100%;
-    background-color: var(--gray);
+    background: linear-gradient(rgb(208, 208, 208), rgb(239, 239, 239));
+    border-bottom: 1px solid var(--dark-gray);
 }
 
 nav ul {
+    margin: 0;
+
     display: flex;
     flex-direction: row;
     justify-content: left;
@@ -21,17 +24,25 @@ nav ul {
 
 .nav-item {
     padding: 5px 10px;
-    border: 1px solid var(--gray-border);
+    border: 1px solid var(--dark-gray);
+    color: rgb(102, 102, 102);
 
     display: flex;
     flex-direction: row;
     align-items: center;
 }
 
+.nav-item:hover {
+    background-color: var(--dark-gray);
+    color: rgb(26, 26, 26);
+}
+
 .nav-item img {
     height: 20px;
     margin: 3px;
 }
+
+
 
 #main-logo {
     height: 50px;
@@ -43,11 +54,15 @@ nav ul {
     column-count: 3;
 
     border-top: 1px solid var(--green);
-    border-right: 1px solid var(--gray-border);
-    border-bottom: 1px solid var(--gray-border);
-    border-left: 1px solid var(--gray-border);
-    box-shadow: 0 1px 1px 1px var(--gray-border);
+    border-right: 1px solid var(--dark-gray);
+    border-bottom: 1px solid var(--dark-gray);
+    border-left: 1px solid var(--dark-gray);
+    box-shadow: 0 1px 1px 1px var(--dark-gray);
     border-radius: 0 0 5px 5px;
+}
+
+.text-section a:hover {
+    color: var(--green);
 }
 
 .data__column-toggle {
