@@ -1,11 +1,42 @@
+/* Roboto italic */
+@font-face {
+    font-family: "Roboto";
+    src: url("assets/fonts/Roboto/Roboto-Italic.ttf") format('truetype');
+    font-weight: 400;
+    font-style: italic;
+}
+
+/* Roboto bold */
+@font-face {
+    font-family: "Roboto";
+    src: url("assets/fonts/Roboto/Roboto-Bold.ttf") format('truetype');
+    font-weight: 700;
+    font-style: bold;
+}
+
+/* Roboto regular */
+@font-face {
+    font-family: "Roboto";
+    src: url("assets/fonts/Roboto/Roboto-Regular.ttf") format('truetype'),
+         url("assets/fonts/Roboto/Roboto-Regular.woff2") format('woff2');
+    font-weight: 400;
+    font-style: normal;
+}
+
+/* global variables and font*/
 :root {
     --gray: #e0e0e0;
     --dark-gray: rgb(204, 204, 204);
     --green: rgb(107, 195, 45);
     --dark-green: green;
 
-    font-size: 18pt;
+    font-size: 14px;
+    font-family: 'Roboto';
+    font-weight: 400;
+    font-style: normal;
+    line-height: 1.45em;
 }
+
 
 nav, h1, main, footer {
     padding: 0 10vw;
@@ -24,7 +55,7 @@ nav ul {
     height: 100%;
     margin: 0;
     padding: 0;
-    font-size: 1rem;
+    font-size: 1.5rem;
 
     display: flex;
     flex-direction: row;
@@ -49,10 +80,11 @@ nav ul li.nav-item {
 nav ul li.nav-item:hover {
     background-color: var(--dark-gray);
     opacity: 1;
+    cursor: pointer;
 }
 
 nav ul li.nav-item img {
-    height: 90%;
+    height: 1.5lh;
 }
 
 nav ul li.nav-item label {
@@ -93,6 +125,7 @@ nav ul li#main-logo:hover {
 
 .text-section a:hover {
     color: var(--dark-green);
+    cursor: pointer;
 }
 
 /* data block */
@@ -126,6 +159,7 @@ nav ul li#main-logo:hover {
     text-decoration: none;
     color: var(--dark-green);
     opacity: 1;
+    cursor: pointer;
 }
 
 img.sort-icon {
@@ -134,7 +168,7 @@ img.sort-icon {
 }
 
 img.sort-icon:hover {
-    
+    cursor: pointer;
 }
 
 .data__table {
@@ -148,10 +182,16 @@ img.sort-icon:hover {
 
 .data__table thead th {
     padding-bottom: 0.5rem;
+    text-align: left;
+    font-weight: 700;
 }
 
 .data__table tbody tr td {
     padding: 0.5rem 0;
+}
+
+.data__table th, .data__table td {
+    padding-right: 0.5em;
 }
 
 
