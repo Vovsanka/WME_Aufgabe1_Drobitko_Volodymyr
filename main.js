@@ -1,4 +1,4 @@
-import tableData from "/dataset/dataset.js";
+import tableData from "./dataset/dataset.js";
 
 // the global variables fetched from json 
 const headers = tableData.headers
