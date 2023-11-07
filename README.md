@@ -1,5 +1,15 @@
 # WME_Aufgabe1_Drobitko_Volodymyr
 
+## Github-Pages
+
+https://vovsanka.github.io/WME_Aufgabe1_Drobitko_Volodymyr/
+
+(Mit den korigierten relativen Pfaden)
+
+## Link zum Git-Repo:
+
+https://github.com/Vovsanka/WME_Aufgabe1_Drobitko_Volodymyr.git
+
 ## Anmerkungen zur Lösung:
 
 - **index.html** ist in einem Browser auszuführen.
@@ -9,9 +19,5 @@
 - Die Daten für die Tabelle werden der JSON-Datei in **/dataset** entnommen (analog zu der ursprünglichen CSV), die Tabellenspalten wurden manuell festgelegt. Außerdem gibt es eine Zuordnung für die Vereinfachung der Spaltennamen.
 - In **/assets/imgs** können Sie die benutzten SVG-Icons finden.
 - Man unterscheidet die folgenden 4 Ansichtsweisen (Breite): <=720px, <=1280px, <=1536px, >1536px.
-
-## Link zum Git-Repo:
-
-https://github.com/Vovsanka/WME_Aufgabe1_Drobitko_Volodymyr.git
 
 ## Entwicklung mit VSCode + LiveServerHost:
