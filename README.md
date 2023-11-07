@@ -13,3 +13,5 @@
 ## Link zum Git-Repo:
 
 https://github.com/Vovsanka/WME_Aufgabe1_Drobitko_Volodymyr.git
+
+## Entwicklung mit VSCode + LiveServerHost:
