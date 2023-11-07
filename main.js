@@ -35,10 +35,10 @@ function initTable() {
         th.setAttribute('header', header)
         th.insertAdjacentText('afterbegin', header)
         let upImg = document.createElement('img')
-        upImg.src = "/assets/img/up.svg"
+        upImg.src = "./assets/img/up.svg"
         upImg.onclick = sortByColumnAscending
         let downImg = document.createElement('img')
-        downImg.src = "/assets/img/down.svg"
+        downImg.src = "./assets/img/down.svg"
         downImg.onclick = sortByColumnDescending
         upImg.className = downImg.className = "sort-icon"
         th.append(upImg)
