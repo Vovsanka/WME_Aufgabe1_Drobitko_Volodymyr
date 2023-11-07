@@ -5,10 +5,20 @@ const headers = tableData.headers
 const dataset = tableData.dataset
 
 // main script
+initBurgerDropdown()
 initTable()
 fillColumnToggles()
 
 // define all the functions
+function initBurgerDropdown() {
+    // inits the burger dropdown with events and properties
+    let burgerLi = document.getElementById('menu')
+    burgerLi.onclick = toggleNavList
+
+    burgerLi.show = true;
+    let nav = burgerLi.parentElement.parentElement
+    nav.classList.add('nav-list--show') 
+}
 
 function initTable() {
     // is called only once when mounted to add dynamic DOM elements to the table
@@ -25,10 +35,10 @@ function initTable() {
         th.setAttribute('header', header)
         th.insertAdjacentText('afterbegin', header)
         let upImg = document.createElement('img')
-        upImg.src = "/img/up.svg"
+        upImg.src = "/assets/img/up.svg"
         upImg.onclick = sortByColumnAscending
         let downImg = document.createElement('img')
-        downImg.src = "/img/down.svg"
+        downImg.src = "/assets/img/down.svg"
         downImg.onclick = sortByColumnDescending
         upImg.className = downImg.className = "sort-icon"
         th.append(upImg)
@@ -138,6 +148,27 @@ function sortByColumn(header, ascending = true) {
         return 0;
     })
     fillTableContents()
+}
+
+function toggleNavList() {
+    // toggles the navigation dropdown menu 
+    let burgerLi = document.getElementById('menu')
+    const navUl = burgerLi.parentElement
+    const hide = burgerLi.show
+    console.log(hide)
+    for (let li of navUl.children) {
+        if (!li.id) {
+            li.style.display = (hide ? "none" : "block")
+        }
+    }
+    burgerLi.show = !hide
+    
+    let nav = burgerLi.parentElement.parentElement
+    if (burgerLi.show) {
+        nav.classList.add('nav-list--show')
+    } else {
+        nav.classList.remove('nav-list--show')
+    }
 }
 
 
