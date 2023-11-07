@@ -18,6 +18,7 @@ header h1 {
     height: auto;
     font-size: 4rem;
     font-style: normal;
+    margin: 2rem 0;
 }
 
 
@@ -269,6 +270,9 @@ footer {
     text-align: right;
 }
 
+b {
+    font-weight: bold;
+}
 
 
 
