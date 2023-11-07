@@ -1,7 +1,8 @@
 /* Roboto italic */
 @font-face {
     font-family: "Roboto";
-    src: url("assets/fonts/Roboto/Roboto-Italic.ttf") format('truetype');
+    src: url("assets/fonts/Roboto/Roboto-Italic.ttf") format('truetype'),
+         url("assets/fonts/Roboto/Roboto-Italic.woff2") format('woff2');
     font-weight: 400;
     font-style: italic;
 }
@@ -9,9 +10,10 @@
 /* Roboto bold */
 @font-face {
     font-family: "Roboto";
-    src: url("assets/fonts/Roboto/Roboto-Bold.ttf") format('truetype');
+    src: url("assets/fonts/Roboto/Roboto-Bold.ttf") format('truetype'),
+         url("assets/fonts/Roboto/Roboto-Bold.woff2") format('woff2');
     font-weight: 700;
-    font-style: bold;
+    font-style: normal;
 }
 
 /* Roboto regular */
@@ -49,7 +51,7 @@ nav, h1, main, footer {
     padding: 0 10vw;
 }
 
-@media screen and (max-width: 1536) and (min-width: 1280px) {
+@media screen and (max-width: 1536px) and (min-width: 1280px) {
     nav, h1, main, footer {
         padding: 0 calc(50vw - 640px);
     }
@@ -102,10 +104,6 @@ nav ul li.nav-item:hover {
     cursor: pointer;
 }
 
-nav ul li.nav-item a label:hover {
-    cursor: pointer;
-}
-
 nav ul li.nav-item a {
     height: 100%;
     color: inherit;
@@ -122,7 +120,7 @@ nav ul li.nav-item img {
     height: 1.5lh;
 }
 
-nav ul li.nav-item label {
+nav ul li.nav-item span {
     margin-left: 7px;
 }
 
@@ -268,7 +266,6 @@ img.sort-icon:hover {
     text-align: left;
     font-size: 1.2rem;
     font-weight: 700;
-    font-style: bold;
 }
 
 .data__table tbody tr td {
