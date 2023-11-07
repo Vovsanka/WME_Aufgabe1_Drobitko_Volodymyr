@@ -131,7 +131,6 @@ function sortByColumnDescending(event) {
     // event handler for descending column sort
     // extracts the column name and calls the sort function
     const header = event.target.parentElement.getAttribute('header')
-    console.log(event.target)
     sortByColumn(header, false)
 }
 
@@ -155,7 +154,6 @@ function toggleNavList() {
     let burgerLi = document.getElementById('menu')
     const navUl = burgerLi.parentElement
     const hide = burgerLi.show
-    console.log(hide)
     for (let li of navUl.children) {
         if (!li.id) {
             li.style.display = (hide ? "none" : "block")
