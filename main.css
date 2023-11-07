@@ -39,17 +39,23 @@
 }
 
 
+header h1 {
+    font-size: 4rem;
+    font-style: normal;
+}
+
+
 nav, h1, main, footer {
     padding: 0 10vw;
 }
 
-@media screen and (max-width: 1920px) and (min-width: 1536px) {
+@media screen and (max-width: 1536) and (min-width: 1280px) {
     nav, h1, main, footer {
-        padding: 0 calc(50vw - 768px);
+        padding: 0 calc(50vw - 640px);
     }
 }
 
-@media screen and (max-width: 1536px) {
+@media screen and (max-width: 1280px) {
     nav, h1, main, footer {
         padding: 0;
     }
@@ -81,7 +87,7 @@ nav ul {
 nav ul li.nav-item {
     box-sizing: border-box;
     height: auto;
-    padding: 1em;
+    padding: 1em 0.5em;
     border-left: 1px solid var(--dark-gray);
     border-right: 1px solid var(--dark-gray);
     color: black;
@@ -92,6 +98,7 @@ nav ul li.nav-item {
 nav ul li.nav-item:hover {
     background-color: var(--dark-gray);
     opacity: 1;
+    transition: 0.4s;
     cursor: pointer;
 }
 
@@ -120,7 +127,7 @@ nav ul li.nav-item label {
 }
 
 nav ul #main-logo.nav-item {
-    padding: 0.5em 2em;
+    padding: 0.5em 1.5em 0.5em 0.5em;
     border: none;
     border-right: 1px solid var(--dark-gray);
     opacity: 1;
@@ -143,7 +150,7 @@ nav ul #menu.nav-item {
     visibility: hidden;
 }
 
-@media screen and (max-width: 1500px) {
+@media screen and (max-width: 1280px) {
     nav {
         display: block;
     }
@@ -259,7 +266,7 @@ img.sort-icon:hover {
 .data__table thead th {
     padding-bottom: 1rem;
     text-align: left;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     font-weight: 700;
     font-style: bold;
 }
