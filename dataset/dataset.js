@@ -1,4 +1,4 @@
-import data from './world_data_v3.json' assert { type: 'json' };
+import data from './worldData.js';
 import headerNames from './headerNames.js'
 
 // defines which table columns (json) are to pick

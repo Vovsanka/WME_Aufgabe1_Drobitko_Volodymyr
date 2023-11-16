@@ -8,37 +8,54 @@
     font-size: 14px;
 }
 
-body {
+* {
     font-family: 'Roboto';
-    font-weight: 400;
     font-style: normal;
     line-height: 1.45em;
 }
 
+html {
+    position: relative;
+    min-height: 100%;
+}
 
-header h1 {
-    height: auto;
+footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+}
+
+main {
+    margin-bottom: 70px;
+}
+
+h1 {
     font-size: 4rem;
+    height: auto;
     font-style: normal;
-    margin: 2rem 0;
+    margin: 1rem 0;
 }
 
 
-nav, h1, main, footer {
+nav, main, footer {
     padding: 0 10vw;
 }
 
+
+
 @media screen and (max-width: 1536px) and (min-width: 1280px) {
-    nav, h1, main, footer {
+    nav, main, footer {
         padding: 0 calc(50vw - 640px);
     }
 }
 
 @media screen and (max-width: 1280px) {
-    nav, h1, main, footer {
+    nav, main, footer {
         padding: 0;
     }
 }
+
+
 
 
 
@@ -64,6 +81,7 @@ nav ul {
 }
 
 nav ul li.nav-item {
+    display: block;
     box-sizing: border-box;
     height: auto;
     padding: 1em 0.5em;
@@ -94,7 +112,7 @@ nav ul li.nav-item a {
 
 
 nav ul li.nav-item img {
-    height: 1.5lh;
+    height: 30px;
 }
 
 nav ul li.nav-item span {
@@ -102,6 +120,7 @@ nav ul li.nav-item span {
 }
 
 nav ul #main-logo.nav-item {
+    height: 100%;
     padding: 0.5em 1.5em 0.5em 0.5em;
     border: none;
     border-right: 1px solid var(--dark-gray);
@@ -144,7 +163,12 @@ nav ul #menu.nav-item {
     }   
 
     nav ul li.nav-item {
+        display: block;
         height: 80px;
+    }
+
+    nav ul li.nav-item--hidden {
+        display: none;
     }
 
     nav ul #main-logo.nav-item {
@@ -221,7 +245,7 @@ nav ul #menu.nav-item {
 }
 
 img.sort-icon {
-    width: 0.7lh;
+    width: 20px;
     margin-left: 3px;
 }
 
@@ -243,6 +267,10 @@ img.sort-icon:hover {
     text-align: left;
     font-size: 1.2rem;
     font-weight: 700;
+}
+
+.data__table tbody tr:nth-child(even) {
+    background-color: var(--gray);
 }
 
 .data__table tbody tr td {
@@ -275,6 +303,5 @@ footer {
 b {
     font-weight: bold;
 }
-
 
 

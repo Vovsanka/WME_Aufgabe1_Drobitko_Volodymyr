@@ -69,10 +69,8 @@ function fillTableContents() {
     tbody.innerHTML = ""
  
     // init table body
-    for (const [index, item] of dataset.entries()) {
+    for (const item of dataset) {
         let tr = document.createElement('tr')
-        if (index % 2 === 1)
-            tr.style.backgroundColor = 'var(--gray)'
         for (const header of headers) {
             const hidden = headerHidden[header] ? "hidden" : "";
             tr.insertAdjacentHTML('beforeend',  `<td header="${header}" ${hidden}>${item[header]}</td>`)
@@ -118,6 +116,8 @@ function toggleColumn(event) {
         elem.hidden = !elem.hidden // updating the properity of standard attribute updates the attribute as well
     }
 
+    // refilling the table because of the firefox background fill bug
+    fillTableContents()
 }
 
 function sortByColumnAscending(event) {
@@ -156,7 +156,12 @@ function toggleNavList() {
     const hide = burgerLi.show
     for (let li of navUl.children) {
         if (!li.id) {
-            li.style.display = (hide ? "none" : "block")
+            if (hide) {
+                li.classList.add("nav-item--hidden")
+            } else {
+                li.classList.remove("nav-item--hidden")
+            }
+                
         }
     }
     burgerLi.show = !hide
